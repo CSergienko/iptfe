@@ -31,8 +31,7 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sentry',
             options: {
-                dsn:
-                    'https://8e96700681784cf6be5bf8bb059d7a67@sentry.io/1395926',
+                dsn: process.env.SENTRY_DSN,
                 environment: process.env.NODE_ENV,
                 enabled: () =>
                     ['production', 'development'].indexOf(
