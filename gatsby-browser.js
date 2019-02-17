@@ -1,7 +1,11 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
+exports.onClientEntry = () => {
+    // Add Logrocket session information to
+    // Sentry error events.
+    if (!window.LogRocket || !window.Sentry) return;
+    window.Sentry.configureScope(scope => {
+        scope.addEventProcessor(async event => {
+            event.extra.sessionURL = window.LogRocket.sessionURL;
+            return event;
+        });
+    });
+};

@@ -27,7 +27,19 @@ module.exports = {
                 icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
             }
         },
-        `gatsby-plugin-netlify-identity-widget`
+        `gatsby-plugin-netlify-identity-widget`,
+        {
+            resolve: 'gatsby-plugin-sentry',
+            options: {
+                dsn:
+                    'https://8e96700681784cf6be5bf8bb059d7a67@sentry.io/1395926',
+                environment: process.env.NODE_ENV,
+                enabled: () =>
+                    ['production', 'development'].indexOf(
+                        process.env.NODE_ENV !== -1
+                    )
+            }
+        }
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.app/offline
         // 'gatsby-plugin-offline',
