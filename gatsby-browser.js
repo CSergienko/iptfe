@@ -1,4 +1,11 @@
-exports.onClientEntry = () => {
+import React from 'react';
+import ErrorBoundary from './src/components/ErrorBoundary';
+
+export const wrapRootElement = ({ element }) => {
+    return <ErrorBoundary>{element}</ErrorBoundary>;
+};
+
+export const onClientEntry = () => {
     // Add Logrocket session information to
     // Sentry error events.
     if (!window.LogRocket || !window.Sentry) return;
